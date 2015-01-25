@@ -1,0 +1,40 @@
+@app.route('/get')
+def get():
+    # Get the parsed contents of the query string
+    querystring = request.args
+    # Render template
+    return render_template('index.html', data = querystring, method = 'get')
+
+@app.route('/post', methods = ['POST'])
+def post():
+# Get the parsed contents of the form data
+    form = request.form
+    # Render template
+    return render_template('data.html', data = form, method = 'post')
+    
+@app.route('/results', methods = ['GET', 'POST'])
+def results():
+    q1 = request.form['q1']
+    q2 = request.form['q2']
+    q3 = request.form['q3']
+    q4 = request.form['q4']
+    q5 = request.form['q5']
+    q6 = request.form['q6']
+    q7 = request.form['q7']
+    q8 = request.form['q8']
+    q9 = request.form['q9']
+    q10 = request.form['q10']
+    q11 = request.form['q11']
+    q12 = request.form['q12']
+    data1 = get_all_tweets("lizziepika",'a', 'b', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'a',)
+    return render_template('results.html', data = data1, method = 'get')
+
+
+# Run
+if __name__ == '__main__':
+    app.run(
+        port = 1025
+    )
+    
+
+    
